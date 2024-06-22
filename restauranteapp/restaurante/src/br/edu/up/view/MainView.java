@@ -30,7 +30,26 @@ public class MainView {
                     produtoView.iniciar();
                     break;
                 case 2:
-                    reservaController.adicionarReserva();
+                    int opcaoReserva;
+                    do {
+                        opcaoReserva = reservaView.mostrarMenu();
+                        switch (opcaoReserva) {
+                            case 1:
+                                reservaController.adicionarReserva();
+                                break;
+                            case 2:
+                                reservaController.cancelarReserva();
+                                break;
+                            case 3:
+                                reservaController.listarReservas();
+                                break;
+                            case 4:
+                                System.out.println("Voltando ao menu principal...");
+                                break;
+                            default:
+                                System.out.println("Opção inválida. Tente novamente.");
+                        }
+                    } while (opcaoReserva != 4);
                     break;
                 case 3:
                     System.out.println("Saindo...");
@@ -38,7 +57,7 @@ public class MainView {
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
-        } while (opcao != 5);
+        } while (opcao != 3);
 
         scanner.close();
     }
